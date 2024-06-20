@@ -6,27 +6,27 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-
 public class Ex1 {
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        int i;
         int cont = 0;
-        BufferedReader br = new BufferedReader(new FileReader("input.txt"));
-        String line;
-        while ((line = br.readLine()) != null) {
-            String arrayLine[] = line.split(line);
-            for (i = 0; i <= line.length(); i++) {
-                int piso = 0;
-                if ("(".equals(arrayLine[i])) {
-                    cont++;
-                }
-                if (")".equals(arrayLine[i])) {
+
+        try (BufferedReader br = new BufferedReader(new FileReader("input.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                for (int i = 0; i < line.length(); i++) {
+                    char ch = line.charAt(i);
+                    if (ch == '(') {
+                        cont++;
+                    } else if (ch == ')') {
                         cont--;
-                 }
+                    }
+                }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        
+
         System.out.println(cont);
     }
 }
