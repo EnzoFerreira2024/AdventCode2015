@@ -1,0 +1,45 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+/**
+ *
+ * @author PTC_AppDev_Trainee
+ */
+public class Ex1_2 {
+
+    public static void main(String[] args) {
+        System.out.println("trebttbrebtret");
+        int position = 0;
+
+       
+try (BufferedReader br = new BufferedReader(new FileReader("inputt.txt"))) {
+            String instructions = br.readLine();
+            
+            int floor = 0;
+            
+            
+            for (int i = 0; i < instructions.length(); i++) {
+                char ch = instructions.charAt(i);
+                
+                if (ch == '(') {
+                    floor++;
+                } else if (ch == ')') {
+                    floor--;
+                }
+                
+                position = i + 1; 
+                
+               
+            }
+            
+            System.out.println("Posicao que leva ao -1: " + position);
+            
+        } catch (IOException e) {
+       } 
+        
+    } 
+    
+    
+    
+}
