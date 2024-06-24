@@ -2,44 +2,34 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-/**
- *
- * @author PTC_AppDev_Trainee
- */
 public class Ex1_2 {
 
     public static void main(String[] args) {
-        System.out.println("trebttbrebtret");
-        int position = 0;
+        System.out.println("vgbbebgee");
+        int andar = 0;
+        int posicao = 0;
+        boolean encontrouPorao = false;
 
-       
-try (BufferedReader br = new BufferedReader(new FileReader("inputt.txt"))) {
-            String instructions = br.readLine();
-            
-            int floor = 0;
-            
-            
-            for (int i = 0; i < instructions.length(); i++) {
-                char ch = instructions.charAt(i);
-                
+        try (BufferedReader br = new BufferedReader(new FileReader("inputt.txt"))) {
+            int ch;
+            while ((ch = br.read()) != -1) {
+                posicao++;
                 if (ch == '(') {
-                    floor++;
+                    andar++;
                 } else if (ch == ')') {
-                    floor--;
+                    andar--;
                 }
-                
-                position = i + 1; 
-                
-               
+
+                if (andar == -1 && !encontrouPorao) {
+                    System.out.println("Posição que entra no porão: " + posicao);
+                    encontrouPorao = true;
+                }
             }
-            
-            System.out.println("Posicao que leva ao -1: " + position);
-            
         } catch (IOException e) {
-       } 
-        
-    } 
-    
-    
-    
+            e.printStackTrace();
+        }
+
+        System.out.println("Andar final: " + andar);
+    }
 }
+
