@@ -1,0 +1,42 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Exe2_1 {
+
+    public static void main(String[] args) {
+        String input = "iinput.txt"; 
+        try (BufferedReader br = new BufferedReader(new FileReader(input))) {
+            String line;
+            double tpapel = 0;
+            
+            while ((line = br.readLine()) != null) {
+                String[] dim = line.split("x");
+                if (dim.length != 3) {
+                    System.out.println("Dimensoess inválidas");
+                    
+                }
+
+                try {
+                    int l = Integer.parseInt(dim[0]);
+                    int w = Integer.parseInt(dim[1]);
+                    int h = Integer.parseInt(dim[2]);
+                    int area = 2 * l * w + 2 * w * h + 2 * h * l;
+                    int pequeno = Math.min(l * w, Math.min(w * h, h * l));
+                    int presente = area + pequeno;
+                    tpapel += presente;
+                    
+                } catch (NumberFormatException e) {
+                    System.err.println("Numero invalido");
+                }
+            }
+            
+            System.out.println("Total de papel: " + tpapel );
+
+        } catch (FileNotFoundException e) {
+            System.out.println("A pasta não foi encontrada: " +"iinput.txt");
+        } catch (IOException e) {
+        }
+    }
+}
