@@ -1,0 +1,26 @@
+public class Factorial {
+
+    public static void main(String[] args) {
+
+        long nr = 0;
+        long factorial = f(nr);
+        if (factorial == 0){
+            System.out.println("Não é possível calcular factorial para um numero tão grande");    
+              }else {
+            
+           if (nr <1){
+               System.out.println("ERRO");
+           }else {
+                
+                System.out.println("O factorial de " + nr + " e " + factorial);
+        }  
+        }
+    }
+    public static long f(long nr) {
+        long res = 1;
+        for (long i = 1; i <= nr; i++) {
+            res *= i;
+        }
+        return res;
+    }
+}
